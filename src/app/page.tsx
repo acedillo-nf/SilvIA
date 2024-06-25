@@ -16,6 +16,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import parse from 'html-react-parser'
 import { getMonthName } from '@/lib/utils'
+import Footer from '@/components/landing-page/Footer'
+import Testimonials from '@/components/landing-page/Testimonials'
 
 
 export default async function Home() {
@@ -141,6 +143,8 @@ export default async function Home() {
             </Link>
           ))}
       </section>
+       <Testimonials/>
+    <Footer/>
     </main>
   );
 }

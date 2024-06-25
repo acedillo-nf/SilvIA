@@ -9,7 +9,7 @@ export const pricingCards = [
       priceId: '',
     },
     {
-      title: 'Premium',
+      title: 'ULTIMATE',
       description: 'Ideal para empresas grandes',
       price: '$97',
       duration: 'mes',
@@ -19,7 +19,7 @@ export const pricingCards = [
       priceId: 'price_1OYxkqFj9oKEERu1KfJGWxgN',
     },
     {
-      title: 'Plus',
+      title: 'PRO',
       description: 'Para empresas compormetidas',
       price: '$67',
       duration: 'month',
