@@ -52,13 +52,13 @@ export default async function Home() {
           <Button className="bg-nblue font-bold text-white px-4">
             Empieza Gratis
           </Button>
-          <Image
+          {/* <Image
             src="/images/iphonecorinna.png"
             width={400}
             height={100}
             alt="Logo"
             className="max-w-lg object-contain"
-          />
+          /> */}
         </div>
       </section>
       <section className="flex justify-center items-center flex-col gap-4 mt-10">
