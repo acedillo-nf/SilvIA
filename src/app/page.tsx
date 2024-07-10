@@ -47,18 +47,18 @@ export default async function Home() {
             className="max-w-lg object-contain"
           />
           <p className="text-center max-w-[500px]">
-            Tu asistente de ventas con IA! Utiliza a SilvIA en cualquier sitio web
+            Tu asistente de ventas con IA! Utiliza a MarIA Sales en cualquier sitio web
           </p>
           <Button className="bg-nblue font-bold text-white px-4">
             Empieza Gratis
           </Button>
-          {/* <Image
+          <Image
             src="/images/iphonecorinna.png"
             width={400}
             height={100}
             alt="Logo"
             className="max-w-lg object-contain"
-          /> */}
+          /> 
         </div>
       </section>
       <section className="flex justify-center items-center flex-col gap-4 mt-10">
