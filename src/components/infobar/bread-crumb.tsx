@@ -29,14 +29,14 @@ const BreadCrumb = (props: Props) => {
             <Switch
               defaultChecked={realtime}
               onClick={(e) => onActivateRealtime(e)}
-              className="data-[state=checked]:bg-orange data-[state=unchecked]:bg-peach"
+              className="data-[state=checked]:bg-nblue data-[state=unchecked]:bg-nmarino"
             />
           </Loader>
         )}
       </div>
       <p className="text-gray-500 text-sm">
         {page == 'settings'
-          ? 'Manage your account settings, preferences and integrations'
+          ? 'Maneja los ajustes de tu cuenta'
           : page == 'dashboard'
           ? 'A detailed overview of your metrics, usage, customers and more'
           : page == 'appointment'
@@ -44,8 +44,8 @@ const BreadCrumb = (props: Props) => {
           : page == 'email-marketing'
           ? 'Send bulk emails to your customers'
           : page == 'integration'
-          ? 'Connect third-party applications into Corinna-AI'
-          : 'Modify domain settings, change chatbot options, enter sales questions and train your bot to do what you want it to.'}
+          ? 'Conecta terceros a MarIA'
+          : 'Modifica ajustes de tu dominio, cambia las opciones de tu chatbot, pon preguntas de ventas y entrena tu bot para que haga lo que desees.'}
       </p>
     </div>
   )

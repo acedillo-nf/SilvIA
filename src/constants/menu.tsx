@@ -21,29 +21,24 @@ export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
     path: 'dashboard',
   },
   {
-    label: 'Conversations',
+    label: 'Conversaciones',
     icon: <ChatIcon />,
     path: 'conversation',
   },
   {
-    label: 'Integrations',
+    label: 'Integraciones',
     icon: <IntegrationsIcon />,
     path: 'integration',
   },
   {
-    label: 'Settings',
+    label: 'Ajustes',
     icon: <SettingsIcon />,
     path: 'settings',
   },
   {
-    label: 'Appointments',
+    label: 'Citas',
     icon: <CalIcon />,
     path: 'appointment',
-  },
-  {
-    label: 'Email Marketing',
-    icon: <EmailIcon />,
-    path: 'email-marketing',
   },
 ]
 
@@ -54,29 +49,29 @@ type TABS_MENU_PROPS = {
 
 export const TABS_MENU: TABS_MENU_PROPS[] = [
   {
-    label: 'unread',
+    label: 'No leídos',
     icon: <EmailIcon />,
   },
   {
-    label: 'all',
+    label: 'Todos',
     icon: <EmailIcon />,
   },
   {
-    label: 'expired',
+    label: 'Expirados',
     icon: <TimerIcon />,
   },
   {
-    label: 'starred',
+    label: 'Destacados',
     icon: <StarIcon />,
   },
 ]
 
 export const HELP_DESK_TABS_MENU: TABS_MENU_PROPS[] = [
   {
-    label: 'help desk',
+    label: 'Buzón de ayuda',
   },
   {
-    label: 'questions',
+    label: 'Preguntas',
   },
 ]
 

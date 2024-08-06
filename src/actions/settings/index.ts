@@ -146,7 +146,7 @@ export const onUpdatePassword = async (password: string) => {
     if (!user) return null
     const update = await clerkClient.users.updateUser(user.id, { password })
     if (update) {
-      return { status: 200, message: 'Password updated' }
+      return { status: 200, message: 'Contraseña actualizada' }
     }
   } catch (error) {
     console.log(error)
@@ -200,7 +200,7 @@ export const onGetCurrentDomainInfo = async (domain: string) => {
 
 export const onUpdateDomain = async (id: string, name: string) => {
   try {
-    //check if domain with name exists
+    //ver si existe el dominio
     const domainExists = await client.domain.findFirst({
       where: {
         name: {
@@ -222,19 +222,19 @@ export const onUpdateDomain = async (id: string, name: string) => {
       if (domain) {
         return {
           status: 200,
-          message: 'Domain updated',
+          message: 'Dominio actualizado',
         }
       }
 
       return {
         status: 400,
-        message: 'Oops something went wrong!',
+        message: 'Oops algo salió mal',
       }
     }
 
     return {
       status: 400,
-      message: 'Domain with this name already exists',
+      message: 'Dominio con este nombre ya existe',
     }
   } catch (error) {
     console.log(error)
@@ -265,13 +265,13 @@ export const onChatBotImageUpdate = async (id: string, icon: string) => {
     if (domain) {
       return {
         status: 200,
-        message: 'Domain updated',
+        message: 'Dominio actualizado',
       }
     }
 
     return {
       status: 400,
-      message: 'Oops something went wrong!',
+      message: 'Oops algo salió mal',
     }
   } catch (error) {
     console.log(error)
@@ -299,7 +299,7 @@ export const onUpdateWelcomeMessage = async (
     })
 
     if (update) {
-      return { status: 200, message: 'Welcome message updated' }
+      return { status: 200, message: 'Mensaje de bienvenida actualizado' }
     }
   } catch (error) {
     console.log(error)
@@ -312,7 +312,7 @@ export const onDeleteUserDomain = async (id: string) => {
   if (!user) return
 
   try {
-    //first verify that domain belongs to user
+    //Verificar que el dominio le pertenece al usuario
     const validUser = await client.user.findUnique({
       where: {
         clerkId: user.id,
@@ -323,7 +323,7 @@ export const onDeleteUserDomain = async (id: string) => {
     })
 
     if (validUser) {
-      //check that domain belongs to this user and delete
+      //reivsar que le pertences y borrar
       const deletedDomain = await client.domain.delete({
         where: {
           userId: validUser.id,
@@ -337,7 +337,7 @@ export const onDeleteUserDomain = async (id: string) => {
       if (deletedDomain) {
         return {
           status: 200,
-          message: `${deletedDomain.name} was deleted successfully`,
+          message: `${deletedDomain.name} ha sido borrado exitosamente`,
         }
       }
     }
@@ -378,14 +378,14 @@ export const onCreateHelpDeskQuestion = async (
     if (helpDeskQuestion) {
       return {
         status: 200,
-        message: 'New help desk question added',
+        message: 'Nueva pregunta de buzón añadida',
         questions: helpDeskQuestion.helpdesk,
       }
     }
 
     return {
       status: 400,
-      message: 'Oops! something went wrong',
+      message: 'Oops algo salió mal',
     }
   } catch (error) {
     console.log(error)
@@ -407,7 +407,7 @@ export const onGetAllHelpDeskQuestions = async (id: string) => {
 
     return {
       status: 200,
-      message: 'New help desk question added',
+      message: 'Nueva pregunta de buzón añadida',
       questions: questions,
     }
   } catch (error) {
@@ -441,13 +441,13 @@ export const onCreateFilterQuestions = async (id: string, question: string) => {
     if (filterQuestion) {
       return {
         status: 200,
-        message: 'Filter question added',
+        message: 'Pregunta de filtro añadida',
         questions: filterQuestion.filterQuestions,
       }
     }
     return {
       status: 400,
-      message: 'Oops! something went wrong',
+      message: 'Oops algo salió mal',
     }
   } catch (error) {
     console.log(error)
@@ -525,7 +525,7 @@ export const onCreateNewDomainProduct = async (
     if (product) {
       return {
         status: 200,
-        message: 'Product successfully created',
+        message: 'Producto añadido exitosamente',
       }
     }
   } catch (error) {
