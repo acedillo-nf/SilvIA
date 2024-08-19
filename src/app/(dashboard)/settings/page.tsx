@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import InfoBar from '@/components/infobar'
 import BillingSettings from '@/components/settings/billing-settings'
 import ChangePassword from '@/components/settings/change-password'
@@ -11,7 +12,6 @@ const Page = (props: Props) => {
       <InfoBar />
       <div className="overflow-y-auto w-full chat-window flex-1 h-0 flex flex-col gap-10">
       <BillingSettings />
-        {/* {/* <DarkModetoggle /> */}
         <ChangePassword /> 
       </div>
       </>
