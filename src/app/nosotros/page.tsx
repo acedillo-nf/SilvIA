@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 import Footer from '@/components/landing-page/Footer';
 import AnimatedGridPattern from "@/components/ui/animated-grid-pattern";
 import Link from 'next/link';
-import { HoverEffect } from '@/components/ui/card-hover-effect';
 
 const Nosotros: React.FC = async () => {
   return (
@@ -24,7 +23,6 @@ const Nosotros: React.FC = async () => {
           </Link>
         </div>
         <div className="max-w-5xl mx-auto px-8">
-      <HoverEffect items={projects} />
     </div>
         <AnimatedGridPattern
           numSquares={30}
@@ -41,42 +39,4 @@ const Nosotros: React.FC = async () => {
     </main>
   );
 }
-export const projects = [
-    {
-      title: "RPA",
-      description:
-        "En Netfy, nos enorgullece estar a la vanguardia de la Automatización de Procesos Robóticos (RPA), donde la eficiencia se encuentra con la innovación.",
-      link: "https://stripe.com",
-    },
-    {
-      title: "Blockchain",
-      description:
-        "Desarrollo de Smart Contracts, soluciones de criptomonedas, creación de NFTs",
-      link: "https://netflix.com",
-    },
-    {
-      title: "SilvIA",
-      description:
-        "Nuestra asistente ideal para empresas de amplios rangos, para venta, prospección, agendar citas y soporte.",
-      link: "https://google.com",
-    },
-    {
-      title: "IA",
-      description:
-        "Utilizamos nuestro conocimiento para sumergirnos en las necesidades de tu negocio y desarrollar el agente adecuado para tu organización.",
-      link: "https://meta.com",
-    },
-    {
-      title: "Broki",
-      description:
-        "Un asistente para agentes de bienes raíces, el cual tiene información de tus desarrollos, guarda leads y agenda citas",
-      link: "https://amazon.com",
-    },
-    {
-      title: "MarIA",
-      description:
-        "El asistente ideal para hoteles y para turismo. Maneja la información de tus huéspedes, como el check-in, reservaciones, etc.",
-      link: "https://microsoft.com",
-    },
-  ];
 export default Nosotros;
