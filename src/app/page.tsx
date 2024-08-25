@@ -40,7 +40,7 @@ export default async function Home() {
             Chatbot con IA
           </span>
           <Image
-            src="/images/logo-netfy.png"
+            src="/images/logo-netfy2.png"
             width={500}
             height={100}
             alt="Logo"
