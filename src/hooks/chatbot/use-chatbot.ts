@@ -1,4 +1,4 @@
-// import { onAiChatBotAssistant, onGetCurrentChatBot } from '@/actions/bot'
+
 import { postToParent, pusherClient } from '@/lib/utils'
 import {
   ChatBotMessageProps,
@@ -80,6 +80,17 @@ export const useChatBot = () => {
 
   let limitRequest = 0
 
+  useEffect(() => {
+    window.addEventListener('message', (e) => {
+      console.log(e.data)
+      const botid = e.data
+      if (limitRequest < 1 && typeof botid == 'string') {
+        onGetDomainChatBot(botid)
+        limitRequest++
+      }
+    })
+  }, [])
+
   const onGetDomainChatBot = async (id: string) => {
     setCurrentBotId(id)
     const chatbot = await onGetCurrentChatBot(id)
@@ -96,16 +107,6 @@ export const useChatBot = () => {
     }
   }
 
-  useEffect(() => {
-    window.addEventListener('message', (e) => {
-      console.log(e.data)
-      const botid = e.data
-      if (limitRequest < 1 && typeof botid == 'string') {
-        onGetDomainChatBot(botid)
-        limitRequest++
-      }
-    })
-  }, [])
 
   const onStartChatting = handleSubmit(async (values) => {
     console.log('ALL VALUES', values)
