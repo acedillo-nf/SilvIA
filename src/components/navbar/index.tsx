@@ -9,7 +9,7 @@ function NavBar() {
       <div className="flex gap-1.5 justify-center self-stretch my-auto text-2xl tracking-tighter text-neutral-700">
       <Link className="flex font-bold flex-row " href="/">
         <Image
-          src="/images/logo-netfy.png"
+          src="/images/logo-netfy2.png"
           alt="LOGO"
           sizes="100vw"
           style={{

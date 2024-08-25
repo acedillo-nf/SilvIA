@@ -28,6 +28,7 @@ const CodeSnippet = ({ id }: Props) => {
             bottom: 50px;
             right: 50px;
             border: none;
+            z-index: 9999;
         }
     \`)
     
