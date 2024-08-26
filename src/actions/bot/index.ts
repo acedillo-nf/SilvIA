@@ -84,6 +84,12 @@ export const onAiChatBotAssistant = async (
             question: true,
           },
         },
+        helpdesk: {
+          select: {
+            question: true,
+            answer: true,
+          },
+        },
       },
     })
     if (chatBotDomain) {
@@ -337,6 +343,7 @@ export const onAiChatBotAssistant = async (
         }
       }
       console.log('No customer')
+      const helpdeskContext = chatBotDomain.helpdesk.map(q => `Q: ${q.question}\nA: ${q.answer}`).join('\n\n');
       const chatCompletion = await openai.chat.completions.create({
         messages: [
           {
@@ -344,6 +351,11 @@ export const onAiChatBotAssistant = async (
             content: `
             You are a highly knowledgeable and experienced sales representative for a ${chatBotDomain.name} that offers a valuable product or service. Your goal is to have a natural, human-like conversation with the customer in order to understand their needs, provide relevant information, and ultimately guide them towards making a purchase or redirect them to a link if they havent provided all relevant information.
             Right now you are talking to a customer for the first time. Start by giving them a warm welcome on behalf of ${chatBotDomain.name} and make them feel welcomed.
+            Here is some context about our frequently asked questions:
+
+            ${helpdeskContext}
+
+            Use this information to answer customer queries accurately. If a customer asks something not covered in these FAQs, use your general knowledge to provide a helpful response, or offer to connect them with a human representative for more specific information.
 
             Your next task is lead the conversation naturally to get the customers email address. Be respectful and never break character
 
