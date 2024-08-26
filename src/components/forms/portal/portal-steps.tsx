@@ -1,8 +1,6 @@
 import React from 'react'
 import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
-import QuestionsForm from './questions'
-
-// import PaymentCheckout from './product-checkout'
+import QuestionsForm from './questions' 
 import BookAppointmentDate from './booking-date'
 import PaymentCheckout from './product-checkout'
 
