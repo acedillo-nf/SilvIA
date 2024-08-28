@@ -44,7 +44,7 @@ const ButtonHandler = (props: Props) => {
       <div className="w-full flex flex-col gap-3 items-center">
         <Button
           type="submit"
-          className="w-full"
+          className="w-full bg-nblue"
           {...(isName &&
             isEmail &&
             isPassword && {
@@ -75,7 +75,7 @@ const ButtonHandler = (props: Props) => {
     <div className="w-full flex flex-col gap-3 items-center">
       <Button
         type="submit"
-        className="w-full"
+        className="w-full bg-nblue"
         onClick={() => setCurrentStep((prev: number) => prev + 1)}
       >
         Continuar

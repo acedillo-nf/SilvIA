@@ -48,7 +48,7 @@ export const onUpdateSubscription = async (
           update: {
             data: {
               plan,
-              credits: plan == 'PRO' ? 50 : plan == 'ULTIMATE' ? 500 : 10,
+              credits: plan === 'STANDARD' ? 10 : plan === 'PRO' ? 50 : 500,
             },
           },
         },
@@ -74,13 +74,16 @@ export const onUpdateSubscription = async (
 }
 
 const setPlanAmount = (item: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
-  if (item == 'PRO') {
-    return 1500
+  switch (item) {
+    case 'STANDARD':
+      return 799  // $7.99
+    case 'PRO':
+      return 999  // $9.99
+    case 'ULTIMATE':
+      return 2000 // $20.00
+    default:
+      return 0
   }
-  if (item == 'ULTIMATE') {
-    return 3500
-  }
-  return 0
 }
 
 export const onGetStripeClientSecret = async (

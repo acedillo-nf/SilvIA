@@ -69,15 +69,13 @@ export const useCompleteCustomerPayment = (onNext: () => void) => {
       return null
     }
 
-    console.log('no reload')
-
     try {
       setProcessing(true)
 
       const { error, paymentIntent } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-          return_url: 'http://localhost:3000/settings',
+          return_url: 'https://maria-sales.vercel.app/settings',
         },
         redirect: 'if_required',
       })
@@ -175,14 +173,13 @@ export const useCompletePayment = (
       return null
     }
 
-
     try {
       setProcessing(true)
 
       const { error, paymentIntent } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-          return_url: 'http://localhost:3000/settings',
+          return_url: 'https://maria-sales.vercel.app/settings',
         },
         redirect: 'if_required',
       })
