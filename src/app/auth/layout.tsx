@@ -10,7 +10,7 @@ type Props = {
 const Layout = async ({ children }: Props) => {
   const user = await currentUser()
 
-  if (user) redirect('/')
+  if (user) redirect('/dashboard')
 
   return (
     <div className="h-screen flex w-full justify-center">
@@ -35,7 +35,7 @@ const Layout = async ({ children }: Props) => {
         <p className="text-iridium md:text-sm mb-10">
           MarIA es capaz de capturar información de tus leads sin necesidad de un formulario...{' '}
           <br />
-          algo totalmente nuevo 😉
+          algo totalmente nuevo 😉 (Bienes Raíces, Venta al por Menor, Logística, Doctores, Tecnología)
         </p>
         {/* <Image
           src="/images/app-ui.png"

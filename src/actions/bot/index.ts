@@ -154,9 +154,9 @@ export const onAiChatBotAssistant = async (
             console.log('new customer made')
             const response = {
               role: 'assistant',
-              content: `Welcome aboard ${
+              content: `Bienvenido ${
                 customerEmail.split('@')[0]
-              }! I'm glad to connect with you. Is there anything you need help with?`,
+              }! Estamos contentos de atenderte. ¿Con que puedo ayudarte?`,
             }
             return { response }
           }
@@ -315,7 +315,7 @@ export const onAiChatBotAssistant = async (
             const link = generatedLink[0]
             const response = {
               role: 'assistant',
-              content: `Great! you can follow the link to proceed`,
+              content: `¡Claro! En este link puedes proceder`,
               link: link.slice(0, -1),
             }
 

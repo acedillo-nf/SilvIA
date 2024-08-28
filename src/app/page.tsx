@@ -18,6 +18,8 @@ import parse from 'html-react-parser'
 import { getMonthName } from '@/lib/utils'
 import Footer from '@/components/landing-page/Footer'
 import Testimonials from '@/components/landing-page/Testimonials'
+import NuestrosClientes from '@/components/landing-page/nuestros-clientes'
+import NuestrosServicios from '@/components/landing-page/nuestros-clientes'
 
 
 export default async function Home() {
@@ -144,6 +146,7 @@ export default async function Home() {
           ))}
       </section>
        <Testimonials/>
+       <NuestrosServicios/>
     <Footer/>
     </main>
   );

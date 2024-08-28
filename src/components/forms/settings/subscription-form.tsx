@@ -21,7 +21,7 @@ const SubscriptionForm = ({ plan }: Props) => {
           <SubscriptionCard
             title="STANDARD"
             description="Perfecto si estas empezando con MarIA"
-            price="0"
+            price="7.99"
             payment={payment}
             onPayment={onSetPayment}
             id="STANDARD"
@@ -30,7 +30,7 @@ const SubscriptionForm = ({ plan }: Props) => {
           <SubscriptionCard
             title="PRO"
             description="Perfecto para negocios que están escalando"
-            price="15"
+            price="9.99"
             payment={payment}
             onPayment={onSetPayment}
             id="PRO"
@@ -39,7 +39,7 @@ const SubscriptionForm = ({ plan }: Props) => {
           <SubscriptionCard
             title="ULTIMATE"
             description="Para negocios con agendas grandes"
-            price="35"
+            price="20"
             payment={payment}
             onPayment={onSetPayment}
             id="ULTIMATE"
@@ -47,9 +47,12 @@ const SubscriptionForm = ({ plan }: Props) => {
         </div>
         <StripeElements payment={payment} />
         {payment === 'STANDARD' && (
-          <Button onClick={onUpdatetToFreTier}>
-            <Loader loading={loading}>Confirmar</Loader>
-          </Button>
+          <>
+            <StripeElements payment={payment} />
+            <Button onClick={onUpdatetToFreTier}>
+              <Loader loading={loading}>Confirmar</Loader>
+            </Button>
+          </>
         )}
       </div>
     </Loader>
