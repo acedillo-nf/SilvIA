@@ -37,15 +37,15 @@ const Layout = async ({ children }: Props) => {
           <br />
           algo totalmente nuevo 😉 (Bienes Raíces, Venta al por Menor, Logística, Doctores, Tecnología)
         </p>
-        {/* <Image
-          src="/images/app-ui.png"
+        <Image
+          src="/images/login-maria.jpeg"
           alt="app image"
           loading="lazy"
           sizes="30"
-          className="absolute shrink-0 !w-[1600px] top-48"
+          className="absolute shrink-0 !w-full top-48"
           width={0}
           height={0}
-        /> */}
+        />
         </div>
     </div>
   )

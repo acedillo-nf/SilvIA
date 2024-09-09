@@ -24,16 +24,7 @@ const Nosotros: React.FC = async () => {
         </div>
         <div className="max-w-5xl mx-auto px-8">
     </div>
-        <AnimatedGridPattern
-          numSquares={30}
-          maxOpacity={0.5}
-          duration={3}
-          repeatDelay={1}
-          className={cn(
-            "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]",
-            "absolute inset-0 h-full w-full",
-          )}
-        />
+        
       </div>
       <Footer/>
     </main>

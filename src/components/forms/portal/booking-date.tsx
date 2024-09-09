@@ -64,7 +64,7 @@ const BookAppointmentDate = ({
               <Card
                 onClick={() => onSlot(slot.slot)}
                 className={cn(
-                  currentSlot == slot.slot ? 'bg-nblue' : 'bg-nmarino',
+                  currentSlot == slot.slot ? 'bg-nmarino' : 'bg-nblue',
                   'px-10 py-4',
                   bookings &&
                     bookings.some(
@@ -73,8 +73,8 @@ const BookAppointmentDate = ({
                           `${date?.getDate()}/${date?.getMonth()}` &&
                         booking.slot == slot.slot
                     )
-                    ? 'bg-gray-300'
-                    : 'cursor-pointer border-nblue hover:bg-nmarino transition duration-150 ease-in-out'
+                    ? 'bg-white'
+                    : 'cursor-pointer  hover:bg-nmarino transition duration-150 ease-in-out'
                 )}
               >
                 <Input
@@ -109,7 +109,7 @@ const BookAppointmentDate = ({
         >
           Editar preguntas
         </Button>
-        <Button>
+        <Button className="bg-nblue hover:bg-nmarino">
           <Loader loading={loading}>Reservar ahora</Loader>
         </Button>
       </div>
