@@ -1,3 +1,4 @@
+'use client'
 import ContactForm from "@/components/landing-page/ContactForm";
 import Footer from "@/components/landing-page/Footer";
 import NavBar from "@/components/navbar";
