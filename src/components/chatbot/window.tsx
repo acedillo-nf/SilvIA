@@ -77,7 +77,7 @@ export const BotWindow = forwardRef<HTMLDivElement, Props>(
           <div className="flex gap-2">
             <Avatar className="w-20 h-20">
               <AvatarImage
-                src="https://github.com/shadcn.png"
+                src="/images/maria.png"
                 alt="@shadcn"
               />
               <AvatarFallback>CN</AvatarFallback>
