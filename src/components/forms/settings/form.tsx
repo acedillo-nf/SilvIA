@@ -91,7 +91,10 @@ const SettingsForm = ({ id, name, chatBot, plan }: Props) => {
       </div>
       <div className="flex gap-5 justify-end">
         <Button
-          onClick={onDeleteDomain}
+          onClick={() => {
+            onDeleteDomain();
+            window.location.href = '/dashboard';
+          }}
           variant="destructive"
           type="button"
           className="px-10 h-[50px]"
