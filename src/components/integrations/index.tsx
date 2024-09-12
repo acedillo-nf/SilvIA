@@ -24,7 +24,7 @@ const IntegrationsList = ({ connections }: Props) => {
                 <div className="w-10 h-10 relative">
                   <Image
                     sizes="100vw"
-                    src={`https://ucarecdn.com/${item.logo}/`}
+                    src="/stripe.webp"
                     alt="Logo"
                     fill
                   />

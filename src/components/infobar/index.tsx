@@ -4,7 +4,8 @@ import { Card } from '../ui/card'
 import { Headphones, Star, Trash } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import BreadCrumb from './bread-crumb'
-
+import { FaUser } from 'react-icons/fa'
+import { MdContactSupport } from "react-icons/md";
 type Props = {}
 
 const InfoBar = (props: Props) => {
@@ -14,22 +15,12 @@ const InfoBar = (props: Props) => {
       <div className="flex gap-3 items-center">
         <div>
           <Card className="rounded-xl flex gap-3 py-3 px-4 text-ghost">
-            <Trash />
-            <Star></Star>
+            <div title="soporte@netfy.mx">
+              <MdContactSupport />
+            </div>
+            <FaUser />
           </Card>
         </div>
-        <Avatar>
-          <AvatarFallback className="bg-nmarino text-white">
-            <Headphones />
-          </AvatarFallback>
-        </Avatar>
-        <Avatar>
-          <AvatarImage
-            src="https://github.com/shadcn.png"
-            alt="@shadcn"
-          />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
       </div>
     </div>
   )
