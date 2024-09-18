@@ -29,6 +29,9 @@ model User {
   campaign Campaign[]
 
   subscription Billings?
+
+  twilioNumber   String?
+  webhookUrl     String?
 }
 
 model Domain {
