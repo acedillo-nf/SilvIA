@@ -15,7 +15,7 @@ export default async function handler(req: { method: string; body: { userId: any
                 return res.status(400).json({ message: 'El número de WhatsApp ya está en uso por otro usuario.' });
             }
 
-            const webhookUrl = `http://localhost:3001/api/webhook/${userId}`;
+            const webhookUrl = `https://maria-sales.vercel.app/api/webhook/${userId}`;
 
             const updatedUser = await client.user.update({
                 where: { id: userId },
