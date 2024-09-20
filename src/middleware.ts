@@ -4,19 +4,16 @@ export default authMiddleware({
   publicRoutes: [
     '/',
     '/auth(.*)',
-    "/integraciones",
+    '/integraciones',
     '/contacto',
     '/precios',
     '/nosotros',
-    '/api/twilio',
-    '/api/twilio/[userId]',
+    '/api(.*)'
   ],
 });
 
 export const config = {
   matcher: [
-    '/',
-    '/((?!_next/static|_next/image|favicon.ico|api|trpc).*)',
-    '/api/twilio/(.*)'
+    '/((?!_next/static|_next/image|favicon.ico|_next|trpc).*)',
   ],
 };
