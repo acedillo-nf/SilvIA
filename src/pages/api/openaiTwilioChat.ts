@@ -11,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         try {
             const twilioClient = twilio(accountSid, authToken);
 
-            const webhookUrl = `https://${req.headers.host}/app/api/twilio/${userId}`;
+            const webhookUrl = `http://maria-sales.vercel.app/api/${userId}`;
 
             const updatedUser = await prisma.user.update({
                 where: { id: userId },
