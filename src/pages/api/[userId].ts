@@ -11,7 +11,7 @@ const openai = new OpenAi({
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         const { Body, From, To } = req.body;
-        
+
         const twilioNumber = To.replace('whatsapp:', '');
 
         try {
@@ -29,10 +29,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 model: "gpt-3.5-turbo",
                 messages: [{
                     role: "system",
-                    content: "You are a helpful virtual assistant."
+                    content: "Eres un asistente virtual que responde a preguntas sobre servicios tecnológicos y atención al cliente."
                 }, {
                     role: "user",
                     content: Body
+                }, {
+                    role: "assistant",
+                    content: `
+                    Los servicios que ofrecemos incluyen:
+                    - RPA (Automatización Robótica de Procesos)
+                    - Inteligencia Artificial (IA)
+                    - Blockchain
+                    Para consultas, puedes llamar al número de atención al cliente: 4773036854.
+                    ¿En qué más puedo asistirte?`
                 }],
                 max_tokens: 150
             });
