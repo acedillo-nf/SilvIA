@@ -30,8 +30,13 @@ model User {
 
   subscription Billings?
 
-  twilioNumber   String?
-  webhookUrl     String?
+  twilioNumber String?  @unique
+
+  webhookUrl String?
+
+  accountSid String?
+
+  authToken String?
 }
 
 model Domain {
