@@ -39,10 +39,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 .update({
                     inboundRequestUrl: `http://maria-sales.vercel.app/api/${userId}`,
                     inboundMethod: 'POST',
-                    useInboundWebhookOnNumber: true
-                })
-                .then(service => console.log(service.inboundRequestUrl))
-                .catch(error => console.error(error));
+                }).then(service => console.log('Webhook configurado:', service.inboundRequestUrl))
+                .catch(error => console.error('Error configurando el webhook:', error));
 
             res.status(200).json({ message: 'Datos de Twilio actualizados correctamente', data: updatedUser });
         } catch (error: any) {
