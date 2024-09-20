@@ -4,7 +4,6 @@ import { CloudIcon } from 'lucide-react'
 import { Separator } from '../ui/separator'
 import Modal from '../modal'
 import { IntegrationModalBody } from './integration-modal-body'
-// import { IntegrationModalBody } from './integration-modal-body'
 
 type Props = {
   name: 'stripe' | 'whatsapp'
@@ -13,7 +12,7 @@ type Props = {
   description: string
   connections: {
     stripe: boolean
-    whatsapp?: boolean  // Make whatsapp optional
+    whatsapp: boolean  // Make this required
   }
 }
 
