@@ -19,13 +19,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     twilioNumber: whatsappNumber,
                     accountSid,
                     webhookUrl,
+                    authToken
                 },
             });
+            /**await twilioClient.incomingPhoneNumbers.list().then(function (data) {
+                console.log(data);
+            }, function (err) {
+                console.log(err);
+            });**/
 
-            await twilioClient.incomingPhoneNumbers.create({
-                phoneNumber: whatsappNumber,
-                smsUrl: webhookUrl,
-            });
+            /**await twilioClient.incomingPhoneNumbers(accountSid)
+                .update({
+                    smsUrl: webhookUrl,
+                })
+                .then(phoneNumber => console.log(phoneNumber.sid))
+                .catch(error => console.error('Error al configurar el webhook en Twilio:', error));**/
+
+            await twilioClient.messaging.v1.services('MG838a13825bb74c70e6245e010f049959')
+                .update({
+                    inboundRequestUrl: `https://${req.headers.host}/app/api/twilio/${userId}`,
+                    inboundMethod: 'POST'
+                })
+                .then(service => console.log(service.inboundRequestUrl))
+                .catch(error => console.error(error));
 
             res.status(200).json({ message: 'Datos de Twilio actualizados correctamente', data: updatedUser });
         } catch (error: any) {
