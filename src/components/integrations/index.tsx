@@ -10,6 +10,7 @@ import IntegrationTrigger from './IntegrationTrigger'
 type Props = {
   connections: {
     stripe: boolean
+    whatsapp: boolean  // Make this required
   }
 }
 
