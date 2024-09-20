@@ -37,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             await twilioClient.messaging.v1.services('MG838a13825bb74c70e6245e010f049959')
                 .update({
-                    inboundRequestUrl: `https://${req.headers.host}/app/api/twilio/${userId}`,
+                    inboundRequestUrl: `https://${req.headers.host}/api/${userId}`,
                     inboundMethod: 'POST'
                 })
                 .then(service => console.log(service.inboundRequestUrl))
