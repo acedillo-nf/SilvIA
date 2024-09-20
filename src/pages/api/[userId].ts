@@ -13,7 +13,6 @@ const openai = new OpenAi({
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-    res.status(500).json(req.body);
     if (req.method === 'POST') {
         const { Body, From } = req.body;
 
