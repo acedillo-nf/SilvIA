@@ -24,8 +24,8 @@ const IntegrationsList = ({ connections }: Props) => {
                 <div className="w-10 h-10 relative">
                   <Image
                     sizes="100vw"
-                    src="/stripe.webp"
-                    alt="Logo"
+                    src={`/${item.name}.webp`}
+                    alt={`${item.name} Logo`}
                     fill
                   />
                 </div>
@@ -34,7 +34,7 @@ const IntegrationsList = ({ connections }: Props) => {
               <IntegrationTrigger
                 connections={connections}
                 title={item.title}
-                descrioption={item.modalDescription}
+                description={item.modalDescription}
                 logo={item.logo}
                 name={item.name}
               />
