@@ -16,32 +16,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         try {
             const user = await prisma.user.findUnique({
-                where: { twilioNumber: twilioNumber }  // Uso de twilioNumber limpio para la consulta
+                where: { twilioNumber: twilioNumber },
+                include: { domains: true }
             });
 
-            if (!user) {
-                return res.status(404).json({ message: "Usuario no encontrado." });
+            if (!user || !user.domains[0]) {
+                return res.status(404).json({ message: "Usuario o dominio no encontrado." });
             }
 
             const twilioClient = twilio(user.accountSid!, user.authToken!);
 
+            const helpDeskQuestions = await prisma.helpDesk.findMany({
+                where: { domainId: user.domains[0].id }
+            });
+
+            const systemMessage = `Eres un asistente virtual que responde a preguntas sobre servicios tecnológicos y atención al cliente. Aquí están algunas preguntas frecuentes y sus respuestas:
+
+${helpDeskQuestions.map(q => `Q: ${q.question}\nA: ${q.answer}`).join('\n\n')}
+
+Por favor, utiliza esta información para responder a las preguntas del usuario. Si la pregunta del usuario no está directamente relacionada con las preguntas frecuentes proporcionadas, responde de la mejor manera posible basándote en el contexto general.`;
+
             const chatResponse = await openai.chat.completions.create({
-                model: "gpt-3.5-turbo",
+                model: "gpt-4",
                 messages: [{
                     role: "system",
-                    content: "Eres un asistente virtual que responde a preguntas sobre servicios tecnológicos y atención al cliente."
+                    content: systemMessage
                 }, {
                     role: "user",
                     content: Body
-                }, {
-                    role: "assistant",
-                    content: `
-                    Los servicios que ofrecemos incluyen:
-                    - RPA (Automatización Robótica de Procesos)
-                    - Inteligencia Artificial (IA)
-                    - Blockchain
-                    Para consultas, puedes llamar al número de atención al cliente: 4773036854.
-                    ¿En qué más puedo asistirte?`
                 }],
                 max_tokens: 150
             });
