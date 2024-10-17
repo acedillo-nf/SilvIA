@@ -76,11 +76,11 @@ export const onUpdateSubscription = async (
 const setPlanAmount = (item: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
   switch (item) {
     case 'STANDARD':
-      return 799  // $7.99
-    case 'PRO':
-      return 999  // $9.99
-    case 'ULTIMATE':
       return 2000 // $20.00
+    case 'PRO':
+      return 4000 // $40.00
+    case 'ULTIMATE':
+      return 7000 // $70.00
     default:
       return 0
   }

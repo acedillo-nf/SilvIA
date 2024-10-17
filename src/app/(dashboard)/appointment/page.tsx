@@ -82,7 +82,7 @@ const Page = async () => {
     )
   } catch (error) {
     console.error('Error in appointment page:', error)
-    return <div>An error occurred while loading appointments. Please try again later.</div>
+    return <div>An error occurred while loading appointments. Try again later.</div>
   }
 }
 
