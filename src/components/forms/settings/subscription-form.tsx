@@ -21,7 +21,7 @@ const SubscriptionForm = ({ plan }: Props) => {
           <SubscriptionCard
             title="STANDARD"
             description="Perfecto si estas empezando con MarIA"
-            price="7.99"
+            price="20.00"
             payment={payment}
             onPayment={onSetPayment}
             id="STANDARD"
@@ -30,7 +30,7 @@ const SubscriptionForm = ({ plan }: Props) => {
           <SubscriptionCard
             title="PRO"
             description="Perfecto para negocios que están escalando"
-            price="9.99"
+            price="40.00"
             payment={payment}
             onPayment={onSetPayment}
             id="PRO"
@@ -39,7 +39,7 @@ const SubscriptionForm = ({ plan }: Props) => {
           <SubscriptionCard
             title="ULTIMATE"
             description="Para negocios con agendas grandes"
-            price="20"
+            price="70.00"
             payment={payment}
             onPayment={onSetPayment}
             id="ULTIMATE"
