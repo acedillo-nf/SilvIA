@@ -5,6 +5,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Script from 'next/script'
 
+
+
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,6 +31,10 @@ export default function RootLayout({
           <meta name="theme-color" content="#ffffff" />
         </head>
         <body className={jakarta.className}>
+        <script
+  src="https://unpkg.com/react-stackai@latest/dist/vanilla/vanilla-stackai.js"
+  data-project-url="https://www.stack-ai.com/embed/5f170297-4afc-4479-a588-0e3fbc570bdb/919714d4-886f-4e65-baca-634b9135cb4f/67112253ee625f7b81b0946f">
+</script>
           {children}
           <Toaster />
           <Script
