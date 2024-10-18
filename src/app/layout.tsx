@@ -31,11 +31,11 @@ export default function RootLayout({
         <body className={jakarta.className}>
           {children}
           <Toaster />
-          <Script
+          {/* <Script
             src="https://unpkg.com/react-stackai@latest/dist/vanilla/vanilla-stackai.js"
             strategy="afterInteractive"
             data-project-url="https://www.stack-ai.com/embed/5f170297-4afc-4479-a588-0e3fbc570bdb/919714d4-886f-4e65-baca-634b9135cb4f/67112253ee625f7b81b0946f"
-          />
+          /> */}
         </body>
       </html>
     </ClerkProvider>
