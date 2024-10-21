@@ -11,7 +11,7 @@ type Props = {
 const CodeSnippet = ({ id }: Props) => {
   const { toast } = useToast()
   
-  const deploymentUrl = "https://maria-sales.vercel.app"; // Store the URL in a variable for easy updates
+  const deploymentUrl = "https://www.netfy-ai.mx/"; // Store the URL in a variable for easy updates
 
   let snippet = `
     const iframe = document.createElement("iframe");
