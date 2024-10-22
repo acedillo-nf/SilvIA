@@ -23,6 +23,7 @@ model User {
   updatedAt DateTime @updatedAt
 
   stripeId String?
+  stripeAccountStatus String?
 
   domains Domain[]
 
