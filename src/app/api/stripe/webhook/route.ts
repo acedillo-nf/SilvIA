@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { client } from '@/lib/prisma'
+import { nextTuesday } from 'date-fns'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET!, {
   apiVersion: '2024-06-20',

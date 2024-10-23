@@ -47,6 +47,9 @@ function NavBar() {
         <a href="/contacto" className="p-2 text-md font-bold leading-6 text-nmarino">
           Contacto
         </a>
+        <a href="/docs" className="p-2 text-md font-bold leading-6 text-nmarino">
+          Documentación
+        </a>
       </div>
       <Link
         href="/dashboard"

@@ -8,7 +8,8 @@ export default authMiddleware({
     '/contacto',
     '/precios',
     '/nosotros',
-    '/api/(.*)'
+    '/api/(.*)',
+    '/docs(.*)'  // Changed from "/docs/(.*)" to '/docs(.*)'
   ],
 });
 
