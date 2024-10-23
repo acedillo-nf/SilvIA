@@ -3,6 +3,7 @@ import {
     onCreateFilterQuestions,
     onCreateHelpDeskQuestion,
     onCreateNewDomainProduct,
+    onDeleteDomainProduct,
     onDeleteUserDomain,
     onGetAllFilterQuestions,
     onGetAllHelpDeskQuestions,
@@ -291,5 +292,33 @@ import {
       }
     })
   
-    return { onCreateNewProduct, register, errors, loading }
+    const onDeleteProduct = async (productId: string) => {
+      try {
+        setLoading(true)
+        const result = await onDeleteDomainProduct(productId)
+        if (result && result.status === 200) {
+          toast({
+            title: 'Success',
+            description: result.message,
+          })
+        } else {
+          toast({
+            title: 'Error',
+            description: result?.message || 'Failed to delete product',
+            variant: 'destructive',
+          })
+        }
+      } catch (error) {
+        console.error(error)
+        toast({
+          title: 'Error',
+          description: 'An unexpected error occurred',
+          variant: 'destructive',
+        })
+      } finally {
+        setLoading(false)
+      }
+    }
+  
+    return { onCreateNewProduct, onDeleteProduct, register, errors, loading }
   }

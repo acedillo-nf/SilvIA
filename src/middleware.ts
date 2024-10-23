@@ -1,5 +1,4 @@
 import { authMiddleware } from '@clerk/nextjs';
-
 export default authMiddleware({
   publicRoutes: [
     '/',
@@ -9,7 +8,9 @@ export default authMiddleware({
     '/precios',
     '/nosotros',
     '/api/(.*)',
-    '/docs(.*)'  // Changed from "/docs/(.*)" to '/docs(.*)'
+    '/docs(.*)',  // Changed from "/docs/(.*)" to '/docs(.*)'
+    '/chatbot(.*)',  // Added chatbot routes
+    '/chat(.*)'  // Added chat routes
   ],
 });
 

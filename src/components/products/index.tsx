@@ -1,5 +1,6 @@
-import React from 'react'
-import { Plus } from 'lucide-react'
+"use client"
+import React, { useState } from 'react'
+import { Plus, Trash2 } from 'lucide-react'
 import { TabsContent } from '../ui/tabs'
 import { DataTable } from '../table'
 import { TableCell, TableRow } from '../ui/table'
@@ -8,6 +9,9 @@ import { getMonthName } from '@/lib/utils'
 import TabsMenu from '../tabs'
 import { SideSheet } from '../sheet'
 import { CreateProductForm } from './product-form'
+import { Button } from '../ui/button'
+import { useProducts } from '@/hooks/settings/use-settings'
+
 
 type Props = {
   products: {
@@ -21,7 +25,15 @@ type Props = {
   id: string
 }
 
-const ProductTable = ({ id, products }: Props) => {
+const ProductTable = ({ id, products: initialProducts }: Props) => {
+  const [productsState, setProductsState] = useState(initialProducts)
+  const { onDeleteProduct, loading } = useProducts(id)
+
+  const handleDeleteProduct = async (productId: string) => {
+    await onDeleteProduct(productId)
+    setProductsState(productsState.filter(product => product.id !== productId))
+  }
+
   return (
     <div>
       <div>
@@ -62,8 +74,8 @@ const ProductTable = ({ id, products }: Props) => {
         }
       >
         <TabsContent value="All products">
-          <DataTable headers={['Imagen', 'Nombre', 'Precio', 'Creado']}>
-            {products.map((product) => (
+          <DataTable headers={['Imagen', 'Nombre', 'Precio', 'Creado', 'Acciones']}>
+            {productsState.map((product) => (
               <TableRow key={product.id}>
                 <TableCell>
                   <Image
@@ -79,6 +91,15 @@ const ProductTable = ({ id, products }: Props) => {
                   {product.createdAt.getDate()}{' '}
                   {getMonthName(product.createdAt.getMonth())}{' '}
                   {product.createdAt.getFullYear()}
+                </TableCell>
+                <TableCell>
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => handleDeleteProduct(product.id)}
+                  >
+                    <Trash2 size={16} />
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}

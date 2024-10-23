@@ -532,3 +532,26 @@ export const onCreateNewDomainProduct = async (
     console.log(error)
   }
 }
+
+export const onDeleteDomainProduct = async (productId: string) => {
+  try {
+    const deletedProduct = await client.product.delete({
+      where: {
+        id: productId,
+      },
+    })
+
+    if (deletedProduct) {
+      return {
+        status: 200,
+        message: 'Producto eliminado exitosamente',
+      }
+    }
+  } catch (error) {
+    console.error(error)
+    return {
+      status: 500,
+      message: 'Error al eliminar el producto',
+    }
+  }
+}
