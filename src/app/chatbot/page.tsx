@@ -4,7 +4,7 @@ import React from 'react'
 type Props = {}
 
 const ChatBot = (props: Props) => {
-  return <AiChatBot />
+  return <AiChatBot id={''} />
 }
 
 export default ChatBot

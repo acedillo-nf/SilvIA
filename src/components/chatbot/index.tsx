@@ -6,9 +6,11 @@ import { BotIcon } from '@/icons/bot-icon'
 import { useChatBot } from '@/hooks/chatbot/use-chatbot'
 import { BotWindow } from './window'
 
-type Props = {}
+type Props = {
+  id: string; // Assuming 'id' is a string, adjust the type if necessary
+}
 
-const AiChatBot = (props: Props) => {
+const AiChatBot: React.FC<Props> = ({ id }) => {
   const {
     onOpenChatBot,
     botOpened,
@@ -22,7 +24,7 @@ const AiChatBot = (props: Props) => {
     onRealTime,
     setOnChats,
     errors,
-  } = useChatBot()
+  } = useChatBot(id)
 
   return (
     <div className="h-screen flex flex-col justify-end items-end gap-4">

@@ -1,4 +1,3 @@
-
 import { postToParent, pusherClient } from '@/lib/utils'
 import {
   ChatBotMessageProps,
@@ -15,7 +14,7 @@ const upload = new UploadClient({
   publicKey: process.env.NEXT_PUBLIC_UPLOAD_CARE_PUBLIC_KEY as string,
 })
 
-export const useChatBot = () => {
+export const useChatBot = (initialId?: string) => {
   const {
     register,
     handleSubmit,
@@ -52,7 +51,7 @@ export const useChatBot = () => {
     { role: 'assistant' | 'user'; content: string; link?: string }[]
   >([])
   const [onAiTyping, setOnAiTyping] = useState<boolean>(false)
-  const [currentBotId, setCurrentBotId] = useState<string>()
+  const [currentBotId, setCurrentBotId] = useState<string | null>(initialId || null)
   const [onRealTime, setOnRealTime] = useState<
     { chatroom: string; mode: boolean } | undefined
   >(undefined)
@@ -183,6 +182,12 @@ export const useChatBot = () => {
     }
   })
 
+  useEffect(() => {
+    if (currentBotId) {
+      onGetDomainChatBot(currentBotId)
+    }
+  }, [currentBotId])
+
   return {
     botOpened,
     onOpenChatBot,
@@ -196,6 +201,8 @@ export const useChatBot = () => {
     setOnChats,
     onRealTime,
     errors,
+    currentBotId,
+    setCurrentBotId,
   }
 }
 
