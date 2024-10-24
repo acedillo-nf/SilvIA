@@ -11,6 +11,7 @@ import {
   useStripe as useStripeHook,
 } from '@stripe/react-stripe-js'
 import { useRouter } from 'next/navigation'
+import { createSubscription } from '@/lib/suscription'
 
 export const useStripe = () => {
   const [onStripeAccountPending, setOnStripeAccountPending] =
@@ -106,31 +107,48 @@ export const useSubscriptions = (plan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
   const [payment, setPayment] = useState<'STANDARD' | 'PRO' | 'ULTIMATE'>(plan)
   const { toast } = useToast()
   const router = useRouter()
-  const onUpdatetToFreTier = async () => {
+
+  const onUpdateSubscription = async (newPlan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
     try {
       setLoading(true)
-      const free = await onUpdateSubscription('STANDARD')
-      if (free) {
-        setLoading(false)
-        toast({
-          title: 'Success',
-          description: free.message,
-        })
-        router.refresh()
+      const subscription = await createSubscription(newPlan)
+      
+      if (subscription) {
+        if (subscription.clientSecret) {
+          // New subscription needs payment confirmation
+          setPayment(newPlan)
+        } else {
+          // Subscription was updated
+          toast({
+            title: 'Success',
+            description: 'Subscription updated successfully',
+          })
+          router.refresh()
+        }
       }
+      setLoading(false)
     } catch (error) {
-      console.log(error)
+      console.error(error)
+      setLoading(false)
+      toast({
+        title: 'Error',
+        description: 'Failed to update subscription',
+        variant: 'destructive',
+      })
     }
   }
 
-  const onSetPayment = (payment: 'STANDARD' | 'PRO' | 'ULTIMATE') =>
-    setPayment(payment)
+  const onSetPayment = (newPlan: 'STANDARD' | 'PRO' | 'ULTIMATE') => {
+    setPayment(newPlan)
+    if (newPlan !== 'STANDARD') {
+      onUpdateSubscription(newPlan)
+    }
+  }
 
   return {
     loading,
     onSetPayment,
     payment,
-    onUpdatetToFreTier,
   }
 }
 

@@ -39,37 +39,80 @@ export const onUpdateSubscription = async (
   try {
     const user = await currentUser()
     if (!user) return
-    const update = await client.user.update({
-      where: {
-        clerkId: user.id,
-      },
-      data: {
-        subscription: {
-          update: {
-            data: {
+
+    // First check if user has a subscription
+    const userWithSub = await client.user.findUnique({
+      where: { clerkId: user.id },
+      include: { subscription: true }
+    })
+
+    if (!userWithSub) return
+
+    // If no subscription exists, create one
+    if (!userWithSub.subscription) {
+      const update = await client.user.update({
+        where: { clerkId: user.id },
+        data: {
+          subscription: {
+            create: {
               plan,
               credits: plan === 'STANDARD' ? 10 : plan === 'PRO' ? 50 : 500,
+              status: 'active'
+            }
+          }
+        },
+        select: {
+          subscription: {
+            select: {
+              plan: true,
             },
           },
         },
-      },
-      select: {
-        subscription: {
-          select: {
-            plan: true,
+      })
+      
+      if (update) {
+        return {
+          status: 200,
+          message: 'subscription created',
+          plan: update.subscription?.plan,
+        }
+      }
+    } else {
+      // If subscription exists, update it
+      const update = await client.user.update({
+        where: {
+          clerkId: user.id,
+        },
+        data: {
+          subscription: {
+            update: {
+              data: {
+                plan,
+                credits: plan === 'STANDARD' ? 10 : plan === 'PRO' ? 50 : 500,
+              },
+            },
           },
         },
-      },
-    })
-    if (update) {
-      return {
-        status: 200,
-        message: 'subscription updated',
-        plan: update.subscription?.plan,
+        select: {
+          subscription: {
+            select: {
+              plan: true,
+            },
+          },
+        },
+      })
+
+      if (update) {
+        return {
+          status: 200,
+          message: 'subscription updated',
+          plan: update.subscription?.plan,
+        }
       }
     }
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 

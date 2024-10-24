@@ -16,8 +16,12 @@ export const onCompleteUserRegistration = async (
         clerkId,
         type,
         subscription: {
-          create: {},
-        },
+          create: {
+            plan: 'STANDARD',
+            credits: 10,
+            status: 'active'
+          }
+        }
       },
       select: {
         fullname: true,
@@ -30,6 +34,7 @@ export const onCompleteUserRegistration = async (
       return { status: 200, user: registered }
     }
   } catch (error) {
+    console.error(error)
     return { status: 400 }
   }
 }

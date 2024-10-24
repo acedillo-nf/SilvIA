@@ -15,29 +15,24 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  fullname  String
-  clerkId   String   @unique
-  type      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  fullname           String
+  clerkId            String    @unique
+  type               String
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
 
-  stripeId String?
+  stripeId           String?
   stripeAccountStatus String?
 
-  domains Domain[]
+  domains            Domain[]
+  campaign           Campaign[]
+  subscription       Subscription?  // Changed from Billings to Subscription
 
-  campaign Campaign[]
-
-  subscription Billings?
-
-  twilioNumber String?  @unique
-
-  webhookUrl String?
-
-  accountSid String?
-
-  authToken String?
+  twilioNumber       String?   @unique
+  webhookUrl         String?
+  accountSid         String?
+  authToken          String?
 }
 
 model Domain {
@@ -68,12 +63,19 @@ model ChatBot {
   domainId       String? @unique @db.Uuid
 }
 
-model Billings {
-  id      String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  plan    Plans   @default(STANDARD)
-  credits Int     @default(10)
-  User    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId  String? @unique @db.Uuid
+model Subscription {
+  id                  String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  plan                Plans     @default(STANDARD)
+  credits             Int       @default(10)
+  stripeCustomerId    String?
+  stripeSubscriptionId String?
+  status              String?   @default("inactive")
+  currentPeriodEnd    DateTime?
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  
+  User                User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId              String?   @unique @db.Uuid
 }
 
 model HelpDesk {
